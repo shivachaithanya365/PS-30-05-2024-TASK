@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-PROBLEMS-reverse/min-max</title>
+    <style>
+        h2,
+        h3 {
+            text-align: center;
+        }
+
+        pre {
+            margin: auto;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 65%;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>---------- PROMPT OUTPUTS ----------</h2>
+    <script src="./task.js">
+    </script>
+    <h2>Source code :</h2>
+    <pre>
+        <h3> Write a program to print the reverse of a number
+            input: 218     output: 812
+            input:-210     output: -12 </h3>
+            var num = prompt("Enter positive/negative number to reverse it : ");
+            // var num = "-124";
+            var originalNum = num;
+            var negative = false;
+            if (num[0] == "-") {
+                negative = true;
+                num = Number(num) * -1
+            }
+            else {
+                num = Number(num);
+            }
+            var rev = 0;
+            while (num > 0) {
+                var rem = num % 10;
+                rev = rev * 10 + rem;
+                num = Math.floor(num / 10);
+            };
+            if (negative) {
+                var rev = String(rev * -1);
+                // rev = "-"+String(rev)
+            }
+            console.log(`Reverse of input (${originalNum}) is ${rev}`);
+            document.write(`Reverse of input (${originalNum}) is ${rev}`);
+            
+        <h3>method 2 - using methods</h3>
+            var num = prompt("Enter positive/negative number to reverse it : ");
+            // var num = "-124";
+            var originalNum = num;
+            var negative = false;
+            if (num[0] == "-") {
+                negative = true;
+                num = String(Number(num) * -1);
+            }
+            var rev = Number(num.split("").reverse().join(""));
+            if (negative) {
+                console.log(`Reverse of input (${originalNum}) is -${rev}`);
+            }
+            else {
+                console.log(`Reverse of input (${originalNum}) is ${rev}`);
+            }
+        <h3>Write a program to print min,max and followed by rest of the numbers
+            input: 13675      output: 17365</h3>
+            var num = prompt("Enter a multi digit number : ");
+            // var num = "1294";
+            var min = num[0];
+            var max = num[0];
+            var rem = "";
+            
+            for (let i = 1; i < num.length; i++) {
+                if (num[i] < min) {
+                    min = num[i];
+                }
+                if (num[i] > max) {
+                    max = num[i];
+                }
+            }
+            for (let i = 0; i < num.length; i++) {
+                if (num[i] !== min && num[i] !== max) {
+                    rem += num[i];
+                }
+            }
+            console.log(`Smallest number from input (${num}) is : ${min}`);
+            console.log(`Largest number from input (${num}) is : ${max}`);
+            console.log(`Other numbers are : ${rem}`);
+            console.log(`combined : ${min}${max}${rem} `);
+            
+            document.write(`Smallest number from input (${num}) is : ${min}`);
+            document.write(`Largest number from input (${num}) is : ${max}`);
+            document.write(`Other numbers are : ${rem}`);
+            document.write(`combined : ${min}${max}${rem}`);
+            
+            <h3>method 2 - using for of loop</h3>>
+            var num = prompt("Enter a multi digit number : ");
+            //var num = "1294";
+            var min = num[0];
+            var max = num[0];
+            var rem = "";
+            for (let i of num) {
+                if (i < min)
+                    min = i
+                if (i > max)
+                    max = i
+            }
+            console.log(`Smallest number from input (${num}) is : ${min}`);
+            console.log(`Largest number from input (${num}) is : ${max}`);
+            for (let i of num) {
+                if (i !== min && i !== max)
+                    rem += i;
+            }
+            console.log(`remaining digits are : ${rem}`);
+            console.log(`combined : ${min}${max}${rem} `);
+            
+            <h3>min max including duplicates</h3>>
+            var num = prompt("Enter a multi digit number : ");
+            //var num = "1294";
+            var min = num[0];
+            var max = num[0];
+            var rem = "";
+            var minCount = 0;
+            var maxCount = 0;
+            for (let i of num) {
+                if (i < min)
+                    min = i
+                if (i > max)
+                    max = i
+            }
+            console.log(`Smallest number from input (${num}) is : ${min}`);
+            console.log(`Largest number from input (${num}) is : ${max}`);
+            document.write(`Smallest number from input (${num}) is : ${min}`);
+            document.write(`Largest number from input (${num}) is : ${max}`);
+            for (let i of num) {
+                if (i !== min && i !== max)
+                    rem += i;
+                if (i == min) {
+                    minCount++;
+                    if (minCount > 1)
+                        rem += i;
+                }
+                if (i == max) {
+                    maxCount++;
+                    if (maxCount > 1)
+                        rem += i;
+                }
+            }
+            console.log(`remaining numbers are : ${rem}`);
+            console.log(`combined : ${min}${max}${rem} `);
+            document.write(`remaining numbers are : ${rem}`);
+            document.write(`combined : ${min}${max}${rem}`);
+        <h3>Write a program to check whether a number is palindrome or not.
+            input: 121    output: 121 is palindrome
+            input: 467    output: 467 is not a palindrome</h3>
+        var num = prompt("Enter a number to check palindrome : ");
+        var rev = num.split("").reverse().join("");
+        if (num === rev) {
+            console.log(`The given input (${num}) is a palindrome`);
+        }
+        else {
+            console.log(`The given input (${num}) is not a palindrome`);
+        }
+    </pre>
+</body>
+
+</html>
